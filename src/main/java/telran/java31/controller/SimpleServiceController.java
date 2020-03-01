@@ -1,8 +1,8 @@
 package telran.java31.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +15,13 @@ import telran.java31.dto.PersonFoodDto;
 @RequestMapping("/v1")
 public class SimpleServiceController
 {
+	
+	@GetMapping("/hello/{firstname}/{lastname}")
+	public String helloPathVar(@PathVariable String firstname, @PathVariable  String lastname)
+	{
+		return "Hello " + firstname + " " + lastname;
+	}
+	
 	@GetMapping("/hello")
 	public String hello(@RequestParam(name = "firstname") String str1, @RequestParam(name = "lastname") String str2)
 	{
